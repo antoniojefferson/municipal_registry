@@ -3,8 +3,12 @@ class MunicipesController < ApplicationController
 
 	# GET /municipe
 	def index
+		@finalResult = []
 		@municipes = Municipe.all
-		render json: @municipes, status: :ok
+		@municipes.each do |municipe|
+			@finalResult.push(municipe.json)
+		end
+		render json: @finalResult, status: :ok
 	end
 
 	# GET /municipe/{id}
@@ -34,7 +38,7 @@ class MunicipesController < ApplicationController
 	private
 
 	def find_municipe
-		@municipe = Municipe.find(params[:_id])
+		@municipe = Municipe.find(params[:_id]).json
 		rescue ActiveRecord::RecordNotFound
 			render json: { errors: 'Municipe not found' }, status: :not_found
 	end

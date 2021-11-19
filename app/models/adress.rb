@@ -1,8 +1,8 @@
 class Adress < ApplicationRecord
   belongs_to :municipe
 
-  def json
-    {
+	def json
+		{
 			cep: self.cep,
 			logradouro: self.logradouro,
 			complement: self.complement,
@@ -14,5 +14,5 @@ class Adress < ApplicationRecord
 			updated_at: self.updated_at,
 			municipe: self.municipe,
 		}
-  end
+	end
 end
