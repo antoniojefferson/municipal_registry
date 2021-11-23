@@ -4,6 +4,7 @@ class Municipe < ApplicationRecord
 
     def json
         {
+            id: self.id,
             full_name: self.full_name,
             cpf: self.cpf,
             cns: self.cns,
@@ -12,6 +13,7 @@ class Municipe < ApplicationRecord
             phone: self.phone,
             photo: self.photo,
             status: self.status,
+            adress: self.adress,
 			created_at: self.created_at,
 			updated_at: self.updated_at,
         }

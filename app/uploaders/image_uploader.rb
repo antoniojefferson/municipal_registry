@@ -48,7 +48,7 @@ class ImageUploader < CarrierWave::Uploader::Base
     private
     
     def model_id
-      model.instance_of?(Municipe) ? model.cpf : model.id
+      model.id
     end
   end
   

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_18_055014) do
+ActiveRecord::Schema.define(version: 2021_11_22_230649) do
 
   create_table "adresses", force: :cascade do |t|
     t.bigint "cep"
@@ -28,11 +28,11 @@ ActiveRecord::Schema.define(version: 2021_11_18_055014) do
 
   create_table "municipes", force: :cascade do |t|
     t.string "full_name"
-    t.bigint "cpf"
-    t.bigint "cns"
+    t.string "cpf"
+    t.string "cns"
     t.string "email"
     t.date "birth_date"
-    t.bigint "phone"
+    t.integer "phone"
     t.string "photo"
     t.boolean "status"
     t.datetime "created_at", precision: 6, null: false
