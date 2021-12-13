@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_22_230649) do
+ActiveRecord::Schema.define(version: 2021_12_13_165628) do
 
   create_table "adresses", force: :cascade do |t|
-    t.bigint "cep"
-    t.string "logradouro"
-    t.string "complement"
-    t.string "district"
-    t.string "city"
-    t.string "uf"
+    t.integer "cep", null: false
+    t.string "logradouro", null: false
+    t.string "complement", null: false
+    t.string "district", null: false
+    t.string "city", null: false
+    t.string "uf", null: false
     t.bigint "ibge_code"
     t.integer "municipe_id", null: false
     t.datetime "created_at", precision: 6, null: false
