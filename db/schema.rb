@@ -13,13 +13,13 @@
 ActiveRecord::Schema.define(version: 2021_12_13_170624) do
 
   create_table "adresses", force: :cascade do |t|
-    t.integer "cep", null: false
+    t.string "cep", null: false
     t.string "logradouro", null: false
     t.string "complement", null: false
     t.string "district", null: false
     t.string "city", null: false
     t.string "uf", null: false
-    t.bigint "ibge_code"
+    t.integer "ibge_code"
     t.integer "municipe_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(version: 2021_12_13_170624) do
 
   create_table "municipes", force: :cascade do |t|
     t.string "full_name", null: false
-    t.integer "cpf", null: false
-    t.integer "cns", null: false
+    t.string "cpf", null: false
+    t.string "cns", null: false
     t.string "email", null: false
     t.date "birth_date", null: false
     t.integer "phone", null: false
