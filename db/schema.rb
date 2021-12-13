@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_22_230649) do
+ActiveRecord::Schema.define(version: 2021_12_13_170624) do
 
   create_table "adresses", force: :cascade do |t|
-    t.bigint "cep"
-    t.string "logradouro"
-    t.string "complement"
-    t.string "district"
-    t.string "city"
-    t.string "uf"
-    t.bigint "ibge_code"
+    t.string "cep", null: false
+    t.string "logradouro", null: false
+    t.string "complement", null: false
+    t.string "district", null: false
+    t.string "city", null: false
+    t.string "uf", null: false
+    t.integer "ibge_code"
     t.integer "municipe_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -27,14 +27,14 @@ ActiveRecord::Schema.define(version: 2021_11_22_230649) do
   end
 
   create_table "municipes", force: :cascade do |t|
-    t.string "full_name"
-    t.string "cpf"
-    t.string "cns"
-    t.string "email"
-    t.date "birth_date"
-    t.integer "phone"
+    t.string "full_name", null: false
+    t.string "cpf", null: false
+    t.string "cns", null: false
+    t.string "email", null: false
+    t.date "birth_date", null: false
+    t.integer "phone", null: false
     t.string "photo"
-    t.boolean "status"
+    t.boolean "status", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
