@@ -1,5 +1,5 @@
 class Adress < ApplicationRecord
-  belongs_to :municipe
+  belongs_to :municipes, optional: true
 
 	def json
 		{
@@ -12,7 +12,7 @@ class Adress < ApplicationRecord
 			ibge_code: self.ibge_code,
 			created_at: self.created_at,
 			updated_at: self.updated_at,
-			municipe: self.municipe,
+			municipe: self.municipes,
 		}
 	end
 end
