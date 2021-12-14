@@ -1,5 +1,5 @@
 class Adress < ApplicationRecord
-  belongs_to :municipes, optional: true
+  belongs_to :municipe, optional: true
 
 	def json
 		{
