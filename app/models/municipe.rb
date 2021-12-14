@@ -1,5 +1,5 @@
 class Municipe < ApplicationRecord
-    has_many :adresses, foreign_key: "municipe_id"
+    has_many :adresses
     mount_uploader :photo, ImageUploader
     accepts_nested_attributes_for :adresses, allow_destroy: true
 
