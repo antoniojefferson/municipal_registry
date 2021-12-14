@@ -12,7 +12,7 @@ class Adress < ApplicationRecord
 			ibge_code: self.ibge_code,
 			created_at: self.created_at,
 			updated_at: self.updated_at,
-			municipe: self.municipes,
+			municipe: self.municipe,
 		}
 	end
 end
