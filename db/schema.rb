@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_13_170624) do
+ActiveRecord::Schema.define(version: 2021_12_15_185507) do
 
-  create_table "adresses", force: :cascade do |t|
+  create_table "addresses", force: :cascade do |t|
     t.string "cep", null: false
     t.string "logradouro", null: false
     t.string "complement", null: false
@@ -20,13 +20,13 @@ ActiveRecord::Schema.define(version: 2021_12_13_170624) do
     t.string "city", null: false
     t.string "uf", null: false
     t.integer "ibge_code"
-    t.integer "municipe_id", null: false
+    t.integer "citizen_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["municipe_id"], name: "index_adresses_on_municipe_id"
+    t.index ["citizen_id"], name: "index_addresses_on_citizen_id"
   end
 
-  create_table "municipes", force: :cascade do |t|
+  create_table "citizens", force: :cascade do |t|
     t.string "full_name", null: false
     t.string "cpf", null: false
     t.string "cns", null: false
@@ -39,5 +39,5 @@ ActiveRecord::Schema.define(version: 2021_12_13_170624) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "adresses", "municipes"
+  add_foreign_key "addresses", "citizens"
 end
