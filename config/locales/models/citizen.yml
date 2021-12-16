@@ -1,0 +1,20 @@
+'pt-BR':
+  activerecord:
+    models:
+      citizen:
+        one: Cidadão
+        other: Cidadãos
+    attributes:
+      citizen:
+        full_name: Nome Completo
+        cpf: CPF
+        cns: CNS
+        email: Email
+        birth_date: Data de Nascimento
+        phone: Telefone
+        photo: Foto
+        status: Status
+    errors:
+      models:
+        citizen:
+          not_found: 'Cidadão não encontrado'
