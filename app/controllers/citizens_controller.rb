@@ -35,9 +35,8 @@ class CitizensController < ApplicationController
   private
 
   def find_citizen
-    @citizen = Citizen.find(params[:_id])
-    rescue ActiveRecord::RecordNotFound
-      render json: { errors: 'Citizen not found' }, status: :not_found
+    @citizen = Citizen.find_by(id: params[:id])
+    render json: I18n.t('errors.messages.citizen_not_found') if @citizen.blank?
   end
 
   def citizen_params
