@@ -1,0 +1,4 @@
+pt-BR:
+  errors:
+    messages:
+      citizen_not_found: 'Cidadão não encontrado'
