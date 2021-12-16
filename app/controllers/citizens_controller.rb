@@ -1,5 +1,5 @@
 class CitizensController < ApplicationController
-  before_action :find_citizen, except: %i[create index]
+  before_action :set_citizen, except: %i[create index]
 
 	# GET /citizens
   def index
@@ -19,7 +19,7 @@ class CitizensController < ApplicationController
     if @citizen.save
       render json: @citizen, status: :created
     else
-      render json: { errors: @citizen.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: @citizen.errors.full_messages.join(', ') }, status: :unprocessable_entity
     end
   end
 
@@ -28,15 +28,15 @@ class CitizensController < ApplicationController
     if @citizen.update(citizen_params)
       render json: @citizen, status: :ok
     else
-      render json: { errors: @citizen.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: @citizen.errors.full_messages.join(', ') }, status: :unprocessable_entity
     end
   end
 
   private
 
-  def find_citizen
+  def set_citizen
     @citizen = Citizen.find_by(id: params[:id])
-    render json: I18n.t('errors.messages.citizen_not_found') if @citizen.blank?
+    render json: {error: I18n.t('activerecord.errors.models.citizen.not_found') } if @citizen.blank?
   end
 
   def citizen_params
