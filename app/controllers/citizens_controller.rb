@@ -3,25 +3,20 @@ class CitizensController < ApplicationController
 
 	# GET /citizens
   def index
-    @finalResult = []
-    @citizens = Citizen.all
-    @citizens.each do |citizen|
-      @finalResult.push(citizen.json)
-    end
-    render json: @finalResult, status: :ok
+    @citizens = Citizen.all.map(&:json)
+    render json: @citizens, status: :ok
   end
 
-  # GET /citizen/{id}
+  # GET /citizens/{id}
   def show
     render json: @citizen, status: :ok
   end
 
-  # POST /citizen
+  # POST /citizens
   def create
     
     @citizen = Citizen.new(citizen_params)
     if @citizen.save
-
       render json: @citizen, status: :created
     else
       render json: { errors: @citizen.errors.full_messages }, status: :unprocessable_entity
