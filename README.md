@@ -1,6 +1,6 @@
-# Municipal Registry (Ruby on Rails)
+# Registration (Ruby on Rails)
 
-This is a simple CRUD for registering municipalities and addresses related to them.
+This is a simple CRUD for registering citizens and addresses related to them.
 
 ## Project information
 
