@@ -14,7 +14,7 @@ class Citizen < ApplicationRecord
         phone: self.phone,
         photo: self.photo,
         status: self.status,
-        address: self.addresses,
+        addresses: self.addresses,
         created_at: self.created_at,
         updated_at: self.updated_at,
       }
