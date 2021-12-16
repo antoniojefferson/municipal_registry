@@ -1,0 +1,20 @@
+'pt-BR':
+  activerecord:
+    models:
+      address:
+        one: Endereço
+        other: Endereços
+    attributes:
+      addresses:
+        cep: CEP
+        logradouro: Rua
+        complement: Complemento
+        district: Bairro
+        city: Cidade
+        uf: Estado
+        ibge_code: Código do IBGE
+        citizen_id: ID do Cidadão
+    errors:
+      models:
+        address:
+          not_found: 'Endereço não encontrado'
