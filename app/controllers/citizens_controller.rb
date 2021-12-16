@@ -23,7 +23,7 @@ class CitizensController < ApplicationController
     end
   end
 
-  # PUT /citizen/{id}
+  # PUT /citizens/{id}
   def update
     if @citizen.update(citizen_params)
       render json: @citizen, status: :ok
