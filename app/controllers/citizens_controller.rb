@@ -42,7 +42,7 @@ class CitizensController < ApplicationController
   def citizen_params
     params.permit(
       :full_name, :cpf, :cns, :email, :birth_date, :phone, :photo, :status,
-      addresses_attributes: [ :id, :cep, :logradouro, :complement, :district, :city, :uf, :ibge_code ]
+      address_attributes: [ :id, :cep, :logradouro, :complement, :district, :city, :uf, :ibge_code ]
     )
   end
 end
