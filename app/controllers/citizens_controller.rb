@@ -3,7 +3,7 @@ class CitizensController < ApplicationController
 
 	# GET /citizens
   def index
-    @citizens = Citizen.all.map(&:json)
+    @citizens = Citizen.all #.map(&:json)
     render json: @citizens, status: :ok
   end
 
