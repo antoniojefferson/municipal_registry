@@ -1,5 +1,5 @@
 class Address < ApplicationRecord
-  belongs_to :citizen, optional: true
+  belongs_to :citizen
   validates :cep, :logradouro, :complement, :district, :city, :uf, presence: true
 
 	def json
