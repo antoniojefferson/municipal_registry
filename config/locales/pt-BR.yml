@@ -1,0 +1,7 @@
+pt-BR:
+  errors:
+    title: Atenção!
+    format: "%{attribute} %{message}"
+    messages:
+      required: não pode ficar em branco
+      blank: não pode ficar em branco
