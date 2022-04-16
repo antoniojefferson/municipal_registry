@@ -3,6 +3,7 @@ class Citizen < ApplicationRecord
   mount_uploader :photo, ImageUploader
   accepts_nested_attributes_for :address, allow_destroy: true
   validates :full_name, :cpf, :cns, :email, :birth_date, :phone, :photo, :status, presence: true
+  
 
   def json
     {
