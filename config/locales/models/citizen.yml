@@ -17,4 +17,11 @@
     errors:
       models:
         citizen:
-          not_found: 'Cidadão não encontrado'
+          not_found: Cidadão não encontrado
+          attributes:
+            cns:
+              unique: CNS já existe no sistema
+            cpf:
+              unique: CPF já existe no sistema
+            email:
+              unique: Email já existe no sistema

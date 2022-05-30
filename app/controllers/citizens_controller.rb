@@ -3,8 +3,7 @@ class CitizensController < ApplicationController
 
 	# GET /citizens
   def index
-    @citizens = Citizen.all
-    render json: @citizens, status: :ok
+    render json: Citizen.all, status: :ok
   end
 
   # GET /citizens/{id}
@@ -14,7 +13,6 @@ class CitizensController < ApplicationController
 
   # POST /citizens
   def create
-    
     @citizen = Citizen.new(citizen_params)
     if @citizen.save
       render json: @citizen, status: :created
