@@ -13,7 +13,7 @@ class Citizen < ApplicationRecord
     return unless citizen.present?
     return if self == citizen
     mensagem = I18n.t('activerecord.errors.models.citizen.attributes.cpf.unique')
-    errors.add(:base, mensagem) if citizen.present?
+    errors.add(:cpf, mensagem) if citizen.present?
   end
 
   def unique_cns
@@ -21,7 +21,7 @@ class Citizen < ApplicationRecord
     return unless citizen.present?
     return if self == citizen
     mensagem = I18n.t('activerecord.errors.models.citizen.attributes.cns.unique')
-    errors.add(:base, mensagem) if citizen.present?
+    errors.add(:cns, mensagem) if citizen.present?
   end
 
   def unique_email
@@ -29,6 +29,6 @@ class Citizen < ApplicationRecord
     return unless citizen.present?
     return if self == citizen
     mensagem = I18n.t('activerecord.errors.models.citizen.attributes.email.unique')
-    errors.add(:base, mensagem) if citizen.present?
+    errors.add(:email, mensagem) if citizen.present?
   end
 end
