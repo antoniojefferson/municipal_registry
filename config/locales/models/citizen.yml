@@ -22,9 +22,9 @@
           not_found: Cidadão não encontrado
           attributes:
             cns:
-              unique: CNS já existe no sistema
+              unique: já existe no sistema
             cpf:
-              unique: CPF já existe no sistema
+              unique: já existe no sistema
             email:
-              unique: Email já existe no sistema
-              invalid: Email com formato invalido
+              unique: já existe no sistema
+              invalid: com formato invalido
