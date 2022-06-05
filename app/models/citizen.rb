@@ -2,7 +2,8 @@ class Citizen < ApplicationRecord
   has_one :address, :dependent => :destroy
   mount_uploader :photo, ImageUploader
   accepts_nested_attributes_for :address, allow_destroy: true
-  validates :full_name, :cpf, :cns, :email, :birth_date, :phone, presence: true
+  validates :full_name, :cpf, :cns, :birth_date, :phone, presence: true
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, presence: true
 
   validate :unique_cpf, if: proc { |citizen| citizen.cpf.present? }
   validate :unique_cns, if: proc { |citizen| citizen.cns.present? }
