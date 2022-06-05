@@ -31,16 +31,16 @@ RSpec.describe CitizensController, type: :controller do
   
   describe 'GET #index' do
 
-    context 'quando busca por todos os citizens' do
+    context 'when you search for all citizens' do
       before do
         get :index
       end
 
-      it 'retorna status 200' do
+      it 'returns status 200' do
         expect(response).to have_http_status(:ok)
       end
 
-      it 'retorna todas chaves e valores no json' do
+      it 'return all keys and values in json' do
         expect(json.first).to eq result
       end
     end
@@ -49,36 +49,36 @@ RSpec.describe CitizensController, type: :controller do
 
   describe 'GET #show' do
 
-    context 'quando busca um citizen por um id existente' do
+    context 'when looking for a citizen by an existing id' do
       
       before do
         get :show, params: { id: citizen.id }
       end
 
-      it 'retorna status 200' do
+      it 'returns status 200' do
         expect(response).to have_http_status(:ok)
       end
 
-      it 'retorna todas chaves e valores no json' do
+      it 'return all keys and values in json' do
         expect(json).to eq result
       end
     end
 
-    context 'quando busca um citizen por um id inexistente' do
+    context 'when looking for a non-existent id' do
       before do
         get :show, params: { id: 60 }
       end
 
-      it 'retorna status 200' do
+      it 'returns status 200' do
         expect(response).to have_http_status(:ok)
       end
 
-      it 'retorna o json um json valido com a chave erro' do
+      it 'returns the json a valid json with the error key' do
         expect(json).not_to be_nil
         expect(json['error']).not_to be_nil
       end
 
-      it 'retorna o erro "Cidadão não encontrado"' do
+      it 'returns error' do
         expect(json['error']).to eq "Cidadão não encontrado"
       end
     end
@@ -89,33 +89,33 @@ RSpec.describe CitizensController, type: :controller do
     let(:valid_params) { citizen_valid.attributes }
     let(:invalid_params) { citizen_invalid.attributes }
 
-    context 'quando o citizen e valido' do
+    context 'when the citizen is valid' do
       before { post :create, params: valid_params }
 
-      it 'retorna o citizin criado' do
+      it 'returns the created citizin' do
         expect(json).not_to be_nil
         expect(json['errors']).to be_nil
       end
 
-      it 'retorna status criado' do
+      it 'returns created status' do
         expect(response).to have_http_status(:created)
       end
     end
 
-    context 'quando o citizen e invalido' do
+    context 'when the citizen is invalid' do
       before { post :create, params: invalid_params }
 
-      it 'retorna erros na criação' do
+      it 'returns errors on creation' do
         expect(json).not_to be_nil
         expect(json['errors']).not_to be_nil
       end
 
-      it 'retorna status não processável' do
+      it 'returns unprocessable status' do
         expect(response).to have_http_status(:unprocessable_entity)
       end
     end
 
-    context 'quando os dados de obrigatorios de address são nulos' do
+    context 'when the mandatory address data is null' do
       let(:citizen2) { build :citizen }
       let(:address1) { build :address, cep: '' }
       let(:address_params) do
@@ -133,12 +133,12 @@ RSpec.describe CitizensController, type: :controller do
 
       before { post :create, params: { **citizen2.attributes, **address_params} }
 
-      it 'retorna erros na criação' do
+      it 'returns errors on creation' do
         expect(json).not_to be_nil
         expect(json['errors']).not_to be_nil
       end
 
-      it 'retorna status não processável' do
+      it 'returns unprocessable status' do
         expect(response).to have_http_status(:unprocessable_entity)
       end
     end
@@ -148,28 +148,28 @@ RSpec.describe CitizensController, type: :controller do
     let(:valid_params) { citizen.attributes }
     let(:invalid_params) { citizen_invalid.attributes }
 
-    context 'quando o citizen é valido' do
+    context 'when the citizen is valid' do
       before { put :update, params: valid_params }
 
-      it 'retorna o citizin criado' do
+      it 'returns the created citizin' do
         expect(json).not_to be_nil
         expect(json['errors']).to be_nil
       end
 
-      it 'retorna status ok' do
+      it 'returns status ok' do
         expect(response).to have_http_status(:ok)
       end
     end
 
-    context 'quando o citizen e invalido' do
+    context 'when the citizen is invalid' do
       before { put :update, params: invalid_params }
 
-      it 'retorna erros no update' do
+      it 'returns errors on update' do
         expect(json).not_to be_nil
         expect(json['errors']).not_to be_nil
       end
 
-      it 'retorna status não processável' do
+      it 'returns unprocessable status' do
         expect(response).to have_http_status(:unprocessable_entity)
       end
     end

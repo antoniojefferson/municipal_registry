@@ -3,11 +3,11 @@ require 'spec_helper'
 
 describe Citizen do
 
-  context 'relação' do
+  context 'relationship' do
     it { is_expected.to have_one(:address).dependent(:destroy) }
   end
 
-  context 'validações' do
+  context 'validations' do
     it { is_expected.to validate_presence_of :full_name }
     it { is_expected.to validate_presence_of :cpf }
     it { is_expected.to validate_presence_of :cns }
@@ -15,35 +15,35 @@ describe Citizen do
     it { is_expected.to validate_presence_of :birth_date }
     it { is_expected.to validate_presence_of :phone }
 
-    context 'quando tem citizen com cpf' do
+    context 'when you have CPF' do
       let!(:citizen) { create(:citizen) }
 
       subject { described_class.new cpf: cpf }
 
-      context 'quando o CPF já existe' do
+      context 'when the CPF already exists' do
         let!(:cpf) { citizen.cpf }
 
-        it 'retorna erro' do
+        it 'returns error' do
           subject.valid?
 
           expect(subject.errors[:cpf]).to contain_exactly I18n.t('activerecord.errors.models.citizen.attributes.cpf.unique')
         end
       end
 
-      context 'quando o CPF não exite existe' do
+      context 'when the CPF does not exist' do
         let(:cpf) { '98636771080' }
 
-        it 'não retorna erro' do
+        it 'does not return error' do
           subject.valid?
 
           expect(subject.errors[:cpf]).to be_empty
         end
       end
 
-      context 'quando o CPF está vazio' do
+      context 'when the CPF is empty' do
         let(:cpf) { '' }
 
-        it 'retorna erro' do
+        it 'returns error' do
           subject.valid?
 
           expect(subject.errors[:cpf]).to contain_exactly 'não pode ficar em branco'
@@ -51,15 +51,15 @@ describe Citizen do
       end
     end
 
-    context 'quando tem citizen com cns' do
+    context 'when you have CNS' do
       let!(:citizen) { create(:citizen) }
 
       subject { described_class.new cns: cns }
 
-      context 'quando o CNS já existe' do
+      context 'when the CNS already exists' do
         let!(:cns) { citizen.cns }
 
-        it 'retorna erro' do
+        it 'returns error' do
           
           subject.valid?
 
@@ -67,20 +67,20 @@ describe Citizen do
         end
       end
 
-      context 'quando o CNS não existe' do
+      context 'when the CNS does not exist' do
         let(:cns) { '164162882070006' }
 
-        it 'não retorna erro' do
+        it 'does not return error' do
           subject.valid?
 
           expect(subject.errors[:cns]).to be_empty
         end
       end
 
-      context 'quando o CNS é vazio' do
+      context 'when the CNS is empty' do
         let(:cns) { '' }
 
-        it 'retorna erro' do
+        it 'returns error' do
           subject.valid?
 
           expect(subject.errors[:cns]).to contain_exactly 'não pode ficar em branco'
@@ -88,15 +88,15 @@ describe Citizen do
       end
     end
 
-    context 'quando tem citizen com email' do
+    context 'when you have email' do
       let!(:citizen) { create(:citizen) }
 
       subject { described_class.new email: email }
 
-      context 'quando o email já existe' do
+      context 'when the email already exists' do
         let!(:email) { citizen.email }
 
-        it 'retorna erro' do
+        it 'returns error' do
           
           subject.valid?
 
@@ -104,10 +104,10 @@ describe Citizen do
         end
       end
 
-      context 'quando o email não existe' do
+      context 'when email does not exist' do
         let(:email) { 'marcos.souza@gmail.com' }
 
-        it 'não retorna erro' do
+        it 'does not return error' do
           subject.valid?
 
           expect(subject.errors[:email]).to be_empty
@@ -134,10 +134,10 @@ describe Citizen do
         end
       end
 
-      context 'quando o email é vazio' do
+      context 'when email is empty' do
         let(:email) { '' }
 
-        it 'retorna erro' do
+        it 'returns error' do
           subject.valid?
 
           expect(subject.errors[:email]).to include 'não pode ficar em branco'
