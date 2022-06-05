@@ -27,3 +27,4 @@
               unique: CPF já existe no sistema
             email:
               unique: Email já existe no sistema
+              invalid: Email com formato invalido
