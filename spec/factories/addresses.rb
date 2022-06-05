@@ -6,6 +6,7 @@ FactoryBot.define do
     district { 'Centro' }
     city { FFaker::AddressBR.city }
     uf { FFaker::AddressBR.state_abbr }
-    ibge_code { 1234 }
+    ibge_code { 123 }
+    citizen
   end
 end
