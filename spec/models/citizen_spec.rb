@@ -114,15 +114,36 @@ describe Citizen do
         end
       end
 
+      context 'when email format is valid' do
+        let(:email) { 'email@email.com' }
+
+        it 'does not have error to email' do
+          subject.valid?
+
+          expect(subject.errors[:email]).to be_empty
+        end
+      end
+
+      context 'when email format is invalid' do
+        let(:email) { 'email@.com' }
+
+        it 'has error to email' do
+          subject.valid?
+
+          expect(subject.errors[:email]).to contain_exactly I18n.t('activerecord.errors.models.citizen.attributes.email.invalid')
+        end
+      end
+
       context 'quando o email é vazio' do
         let(:email) { '' }
 
         it 'retorna erro' do
           subject.valid?
 
-          expect(subject.errors[:email]).to contain_exactly 'não pode ficar em branco'
+          expect(subject.errors[:email]).to include 'não pode ficar em branco'
         end
       end
+
     end
 
     describe 'nested_attributes' do
