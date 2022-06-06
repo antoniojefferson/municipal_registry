@@ -1,4 +1,4 @@
-class CitizensController < ApplicationController
+class Api::V1::CitizensController < ApplicationController
   before_action :set_citizen, except: %i[create index]
 
 	# GET /citizens

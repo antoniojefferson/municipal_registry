@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe CitizensController, type: :controller do
+RSpec.describe Api::V1::CitizensController, type: :controller do
   let!(:citizen) { create :citizen }
   let!(:address) { create :address, citizen_id: citizen.id }
   let(:citizen_valid) { build :citizen }
